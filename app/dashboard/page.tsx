@@ -5,6 +5,8 @@ import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import type { User } from '@supabase/supabase-js';
 
+import { GameSearch } from '@/lib/components/Search';
+
 export default function DashboardPage() {
 	const [user, setUser] = useState<User | null>(null);
 	const [loading, setLoading] = useState(true);
@@ -70,10 +72,11 @@ export default function DashboardPage() {
 						🎮 Dashboard coming soon! You&apos;re successfully
 						logged in.
 					</p>
-					<p className='text-zinc-500 dark:text-zinc-500 text-sm mt-4'>
-						Next step: Add game search and backlog list
-						functionality
-					</p>
+					<GameSearch
+						onSelectGame={(game) =>
+							console.log('Selected game:', game)
+						}
+					/>
 				</div>
 			</div>
 		</div>
